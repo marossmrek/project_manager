@@ -7,14 +7,14 @@ import FlatButton from 'material-ui/FlatButton';
 class Header extends React.Component {
     render() {
         return (
-            <div>
+            <div className="main-header">
                 <AppBar
-                    title={<NavLink to="/">Daily howl</NavLink>}
+                    title={<NavLink to="/" className="title">Daily howl</NavLink>}
                     iconStyleLeft={{display: "none"}}
                     iconElementRight={
-                        <div>
-                            <FlatButton><NavLink to="/project">Project</NavLink></FlatButton>
-                            <FlatButton><NavLink to="/howl">Howl</NavLink></FlatButton>
+                        <div className="nav-links">
+                            <NavLink to="/project"><FlatButton>Project</FlatButton></NavLink>
+                            <NavLink to="/howl"><FlatButton>Howl</FlatButton></NavLink>
                         </div>
                     }
                 />

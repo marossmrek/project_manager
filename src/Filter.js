@@ -62,7 +62,7 @@ class Filter extends React.Component {
 
     render() {
         return (
-            <div className="row">
+            <div className="row filter">
                 <div className="col-md-4 col-lg-2">
                     <SelectField
                         floatingLabelText="Project"
@@ -125,8 +125,10 @@ class Filter extends React.Component {
                         okLabel="OK"
                     />
                 </div>
-                <div className="col-md-12 col-lg-2">
+                <div className="col-xs-2 col-lg-1 button">
                     <RaisedButton onClick={this.handleSearchButton.bind(this)} label="Search" primary={true}/>
+                </div>
+                <div className="col-xs-2 col-lg-1 button">
                     <RaisedButton onClick={this.handleCancelButton.bind(this)} label="Reset" secondary={true}/>
                 </div>
             </div>
