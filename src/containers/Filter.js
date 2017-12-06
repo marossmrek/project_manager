@@ -1,64 +1,59 @@
 import React from 'react';
+import {connect} from 'react-redux';
 
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 import RaisedButton from 'material-ui/RaisedButton';
 import DatePicker from 'material-ui/DatePicker';
 
+import {changeFilterValue, resetFilterValues} from '../actions/filterActions';
+
 class Filter extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            filterValue: {
-                searchProject: 1,
-                searchUser: 1,
-                searchProjectType: 1,
-                searchMinDate: undefined,
-                searchMaxDate: undefined
-            }
-        };
-    }
 
     handleSearchProject(event, index, value) {
-        this.handleFilterValues("searchProject", value);
+        this.props.changeFilterValue({
+            filterName: "searchProject",
+            filterValue: value
+        });
     }
 
     handleSearchUser(event, index, value) {
-        this.handleFilterValues("searchUser", value);
+        this.props.changeFilterValue({
+            filterName: "searchUser",
+            filterValue: value
+        });
     }
 
     handleSearchProjectType(event, index, value) {
-        this.handleFilterValues("searchProjectType", value);
+        this.props.changeFilterValue({
+            filterName: "searchProjectType",
+            filterValue: value
+        });
     }
 
     handleMinDate(event, date) {
-        this.handleFilterValues("searchMinDate", date);
+        this.props.changeFilterValue({
+            filterName: "searchMinDate",
+            filterValue: date
+        });
     }
 
     handleMaxDate(event, date) {
         // set the time to the end of the day
         date.setHours(23, 59, 59, 999);
-        this.handleFilterValues("searchMaxDate", date);
+        this.props.changeFilterValue({
+            filterName: "searchMaxDate",
+            filterValue: date
+        });
     }
 
     handleSearchButton() {
-        console.log(this.state.filterValue);
+        console.log(this.props.filter);
     }
 
     handleCancelButton = () => {
-        this.handleFilterValues();
+        this.props.resetFilterValues()
     };
-
-    handleFilterValues(filterName = null, newFilterValue = null) {
-        let newFilter = !filterName && !newFilterValue ? {
-            searchProject: 1,
-            searchUser: 1,
-            searchProjectType: 1,
-            searchMinDate: undefined,
-            searchMaxDate: undefined
-        } : {...this.state.filterValue, [filterName]: newFilterValue};
-        this.setState({filterValue: newFilter});
-    }
 
     render() {
         return (
@@ -66,7 +61,7 @@ class Filter extends React.Component {
                 <div className="col-md-4 col-lg-2">
                     <SelectField
                         floatingLabelText="Project"
-                        value={this.state.filterValue.searchProject}
+                        value={this.props.filter.searchProject}
                         fullWidth={true}
                         onChange={this.handleSearchProject.bind(this)}
                     >
@@ -78,7 +73,7 @@ class Filter extends React.Component {
                 <div className="col-md-4 col-lg-2">
                     <SelectField
                         floatingLabelText="User"
-                        value={this.state.filterValue.searchUser}
+                        value={this.props.filter.searchUser}
                         fullWidth={true}
                         onChange={this.handleSearchUser.bind(this)}
                     >
@@ -90,7 +85,7 @@ class Filter extends React.Component {
                 <div className="col-md-4 col-lg-2">
                     <SelectField
                         floatingLabelText="Project type"
-                        value={this.state.filterValue.searchProjectType}
+                        value={this.props.filter.searchProjectType}
                         fullWidth={true}
                         onChange={this.handleSearchProjectType.bind(this)}
                     >
@@ -106,7 +101,7 @@ class Filter extends React.Component {
                         onChange={this.handleMinDate.bind(this)}
                         fullWidth={true}
                         maxDate={new Date()}
-                        value={this.state.filterValue.searchMinDate}
+                        value={this.props.filter.searchMinDate}
                         autoOk={true}
                         cancelLabel="Cancel"
                         okLabel="OK"
@@ -119,7 +114,7 @@ class Filter extends React.Component {
                         onChange={this.handleMaxDate.bind(this)}
                         fullWidth={true}
                         maxDate={new Date()}
-                        value={this.state.filterValue.searchMaxDate}
+                        value={this.props.filter.searchMaxDate}
                         autoOk={true}
                         cancelLabel="Cancel"
                         okLabel="OK"
@@ -136,4 +131,21 @@ class Filter extends React.Component {
     }
 }
 
-export default Filter;
+const mapStateToProps = (state) => {
+    return {
+        filter: state.filter
+    };
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        changeFilterValue: (filterValue) => {
+            dispatch(changeFilterValue(filterValue));
+        },
+        resetFilterValues: () => {
+            dispatch(resetFilterValues())
+        }
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Filter);

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Filter from './Filter';
+import Filter from '../containers/Filter';
 
 class Project extends React.Component {
     render() {

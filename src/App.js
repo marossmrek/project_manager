@@ -1,9 +1,9 @@
 import React from 'react';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 
-import Header from './Header';
-import Project from './Project';
-import Howl from './Howl'
+import Header from './components/Header';
+import Project from './components/Project';
+import Howl from './components/Howl'
 
 class App extends React.Component {
     render() {
