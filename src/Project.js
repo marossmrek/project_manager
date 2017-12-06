@@ -1,10 +1,12 @@
 import React from 'react';
 
+import Filter from './Filter';
+
 class Project extends React.Component {
     render() {
         return (
-            <div>
-                <h1>Project</h1>
+            <div className="container-fluid">
+                <Filter/>
             </div>
         );
     }
