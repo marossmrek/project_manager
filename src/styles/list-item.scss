@@ -1,0 +1,40 @@
+.list-item-container {
+  margin: 15px 0px 15px 0px;
+  border: 1px solid #e3e3e3;
+  border-radius: 3px;
+  background-color: #ffffff;
+  box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.2);
+  padding: 15px;
+  color: #94989a;
+
+  &:hover, &:focus {
+    box-shadow: 0 1px 20px 0 rgba(0, 0, 0, .3);
+    transform: scale(1.01);
+    transition: transform 0.33s ease-out;
+  }
+
+  .avatar {
+    text-align: left;
+  }
+
+  .list-item-code {
+    color: #3b3b3b;
+  }
+
+  .list-item-state, .list-item-date {
+    font-size: 12px;
+  }
+
+  .list-item-content {
+    font-size: 12px;
+    .list-item-name {
+      margin: 0px 0px 5px 0px;
+      font-size: 14px;
+      color: #3b3b3b;
+    }
+  }
+
+  .action-icons {
+    text-align: right;
+  }
+}

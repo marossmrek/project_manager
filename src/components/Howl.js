@@ -1,10 +1,12 @@
 import React from 'react';
 
+import Filter from '../containers/Filter';
+
 class Howl extends React.Component {
     render() {
         return (
-            <div>
-                <h1>Howl</h1>
+            <div className="container-fluid project">
+                <Filter/>
             </div>
         );
     }

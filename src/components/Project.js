@@ -1,12 +1,14 @@
 import React from 'react';
 
-import Filter from '../containers/Filter';
+import ListWithActions from '../containers/ListWithActions';
+import ListProject from './ListProject';
 
 class Project extends React.Component {
     render() {
+        let ExtendedList = ListWithActions(ListProject, [{}, {}]);
         return (
             <div className="container-fluid project">
-                <Filter/>
+                <ExtendedList/>
             </div>
         );
     }
