@@ -1,7 +1,7 @@
 const filterReducer = (state = {
-    searchProject: 1,
-    searchUser: 1,
-    searchProjectType: 1,
+    searchProject: null,
+    searchUser: null,
+    searchProjectType: null,
     searchMinDate: undefined,
     searchMaxDate: undefined
 }, action) => {
@@ -14,13 +14,14 @@ const filterReducer = (state = {
             break;
         case "FILTER_RESET":
             state = {
-                searchProject: 1,
-                searchUser: 1,
-                searchProjectType: 1,
+                searchProject: null,
+                searchUser: null,
+                searchProjectType: null,
                 searchMinDate: undefined,
                 searchMaxDate: undefined
             };
             break;
+        default:
     }
     return state;
 };

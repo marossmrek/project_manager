@@ -1,13 +1,25 @@
-.main-header{
+.main-header {
   font-size: 16px;
-  .title{
+  .title {
     text-decoration: none;
     color: #fff;
-    &:hover{
+    &:hover {
       text-decoration: none;
     }
   }
-  .nav-links{
+  .nav-links {
     padding: 5px;
+    .link {
+      color: #fff;
+      text-decoration: none;
+      margin: 5px;
+      &:hover {
+        color: #ff4081;
+      }
+    }
+    .active-link{
+      color: #ff4081;
+      font-size: 20px;
+    }
   }
 }

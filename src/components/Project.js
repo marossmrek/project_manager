@@ -1,17 +1,21 @@
 import React from 'react';
 
-import ListWithActions from '../containers/ListWithActions';
-import ListProject from './ListProject';
+import FormModal from '../containers/FormModal';
+import ListProject from '../containers/ListProject';
 
 class Project extends React.Component {
+
     render() {
-        let ExtendedList = ListWithActions(ListProject, [{}, {}]);
         return (
             <div className="container-fluid project">
-                <ExtendedList/>
+                <FormModal/>
+                <ListProject/>
             </div>
         );
     }
 }
 
 export default Project;
+
+
+

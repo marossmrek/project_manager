@@ -10,60 +10,28 @@ import {changeFilterValue, resetFilterValues} from '../actions/filterActions';
 
 class Filter extends React.Component {
 
-    handleSearchProject(event, index, value) {
-        this.props.changeFilterValue({
-            filterName: "searchProject",
-            filterValue: value
-        });
-    }
-
-    handleSearchUser(event, index, value) {
-        this.props.changeFilterValue({
-            filterName: "searchUser",
-            filterValue: value
-        });
-    }
-
-    handleSearchProjectType(event, index, value) {
-        this.props.changeFilterValue({
-            filterName: "searchProjectType",
-            filterValue: value
-        });
-    }
-
-    handleMinDate(event, date) {
-        this.props.changeFilterValue({
-            filterName: "searchMinDate",
-            filterValue: date
-        });
-    }
-
-    handleMaxDate(event, date) {
-        // set the time to the end of the day
-        date.setHours(23, 59, 59, 999);
-        this.props.changeFilterValue({
-            filterName: "searchMaxDate",
-            filterValue: date
-        });
-    }
-
     handleSearchButton() {
-        console.log(this.props.filter);
+        //TODO: send filter to API and load search result
     }
-
-    handleCancelButton = () => {
-        this.props.resetFilterValues()
-    };
 
     render() {
+        const {
+            filter,
+            changeFilterValue,
+            resetFilterValues
+        } = this.props;
+
         return (
             <div className="row filter">
                 <div className="col-md-4 col-lg-2">
                     <SelectField
                         floatingLabelText="Project"
-                        value={this.props.filter.searchProject}
+                        value={filter.searchProject}
                         fullWidth={true}
-                        onChange={this.handleSearchProject.bind(this)}
+                        onChange={(event, index, value) => changeFilterValue({
+                            filterName: "searchProject",
+                            filterValue: value
+                        })}
                     >
                         <MenuItem value={1} primaryText="First project"/>
                         <MenuItem value={2} primaryText="Second project"/>
@@ -73,9 +41,12 @@ class Filter extends React.Component {
                 <div className="col-md-4 col-lg-2">
                     <SelectField
                         floatingLabelText="User"
-                        value={this.props.filter.searchUser}
+                        value={filter.searchUser}
                         fullWidth={true}
-                        onChange={this.handleSearchUser.bind(this)}
+                        onChange={(event, index, value) => changeFilterValue({
+                            filterName: "searchUser",
+                            filterValue: value
+                        })}
                     >
                         <MenuItem value={1} primaryText="First user"/>
                         <MenuItem value={2} primaryText="Second user"/>
@@ -85,9 +56,13 @@ class Filter extends React.Component {
                 <div className="col-md-4 col-lg-2">
                     <SelectField
                         floatingLabelText="Project type"
-                        value={this.props.filter.searchProjectType}
+                        value={filter.searchProjectType}
                         fullWidth={true}
-                        onChange={this.handleSearchProjectType.bind(this)}
+                        onChange={(event, index, value) => changeFilterValue({
+                            filterName: "searchProjectType",
+                            filterValue: value
+                        })
+                        }
                     >
                         <MenuItem value={1} primaryText="First type"/>
                         <MenuItem value={2} primaryText="Second type"/>
@@ -98,10 +73,13 @@ class Filter extends React.Component {
                     <DatePicker
                         floatingLabelText="From date"
                         floatingLabelFixed={true}
-                        onChange={this.handleMinDate.bind(this)}
+                        onChange={(event, date) => changeFilterValue({
+                            filterName: "searchMinDate",
+                            filterValue: date
+                        })}
                         fullWidth={true}
                         maxDate={new Date()}
-                        value={this.props.filter.searchMinDate}
+                        value={filter.searchMinDate}
                         autoOk={true}
                         cancelLabel="Cancel"
                         okLabel="OK"
@@ -111,10 +89,13 @@ class Filter extends React.Component {
                     <DatePicker
                         floatingLabelText="To date"
                         floatingLabelFixed={true}
-                        onChange={this.handleMaxDate.bind(this)}
+                        onChange={(event, date) => changeFilterValue({
+                            filterName: "searchMaxDate",
+                            filterValue: date
+                        })}
                         fullWidth={true}
                         maxDate={new Date()}
-                        value={this.props.filter.searchMaxDate}
+                        value={filter.searchMaxDate}
                         autoOk={true}
                         cancelLabel="Cancel"
                         okLabel="OK"
@@ -124,7 +105,7 @@ class Filter extends React.Component {
                     <RaisedButton onClick={this.handleSearchButton.bind(this)} label="Search" primary={true}/>
                 </div>
                 <div className="col-xs-2 col-lg-1 button">
-                    <RaisedButton onClick={this.handleCancelButton.bind(this)} label="Reset" secondary={true}/>
+                    <RaisedButton onClick={() => resetFilterValues()} label="Reset" secondary={true}/>
                 </div>
             </div>
         );
