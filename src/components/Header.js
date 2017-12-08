@@ -4,7 +4,6 @@ import {NavLink} from 'react-router-dom';
 import AppBar from 'material-ui/AppBar';
 
 class Header extends React.Component {
-
     render() {
         return (
             <div className="main-header">
