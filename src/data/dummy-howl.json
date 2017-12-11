@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "user": "Maros",
+    "date": "Thu Dec 07 2017 14:31:42",
+    "type": "Active",
+    "projects":[
+      {"status":"Good","name":"DW2","description": "Vivamus suscipit tortor eget felis porttitor volutpat. Lorem ipsum dolor sit amet.", "percentage":"40"},
+      {"status":"Bad","name":"PUP","description": "Cras ultricies ligula sed magna dictum porta. ", "percentage":"60"}
+    ]
+  },
+  {
+    "id": 2,
+    "user": "Karl",
+    "date": "Thu Dec 07 2017 14:31:42",
+    "type":"Active",
+    "projects":[
+      {"status":"Good","name":"WVM","description": "Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem.", "percentage":"100"}
+    ]
+  },
+  {
+    "id": 3,
+    "user": "Dominik",
+    "date": "Thu Dec 07 2017 14:31:42",
+    "type":"Draft",
+    "projects":[
+      {"status":"Good","name":"WVM","description": "Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem.", "percentage":"100"}
+    ]
+  }
+]

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import FormModal from '../containers/FormModal';
+import ProjectFormModal from '../containers/ProjectFormModal';
 import ListProject from '../containers/ListProject';
 
 class Project extends React.Component {
@@ -8,7 +8,7 @@ class Project extends React.Component {
     render() {
         return (
             <div className="container-fluid project">
-                <FormModal/>
+                <ProjectFormModal/>
                 <ListProject/>
             </div>
         );

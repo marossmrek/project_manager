@@ -8,10 +8,10 @@ import TextField from 'material-ui/TextField';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 
-import {switchModal, changeFormValue, resetFormValues, setUpFormErrors} from '../actions/formModalActions';
+import {switchModal, changeFormValue, resetFormValues, setUpFormErrors} from '../actions/projectFormModalActions';
 import {loadListData} from '../actions/listActions';
 
-class FormModal extends React.Component {
+class ProjectFormModal extends React.Component {
 
     handleSubmit() {
         //TODO: API call for add,update or delete project item, now just for testing
@@ -175,7 +175,7 @@ class FormModal extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        form: state.formModal,
+        form: state.projectFormModal,
         list: state.list
     };
 };
@@ -200,6 +200,6 @@ const mapDispatchToProps = (dispatch) => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(FormModal);
+export default connect(mapStateToProps, mapDispatchToProps)(ProjectFormModal);
 
 

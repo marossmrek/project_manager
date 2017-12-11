@@ -1,4 +1,4 @@
-const formModalReducer = (state = {
+const projectFormModalReducer = (state = {
     isShowed: false,
     editMode: false,
     deleteMode:false,
@@ -18,13 +18,13 @@ const formModalReducer = (state = {
     }
 }, action) => {
     switch (action.type) {
-        case "FORM_SWITCH":
+        case "PROJECT_FORM_SWITCH":
             state = {
                 ...state,
                 isShowed: action.payload
             };
             break;
-        case "FORM_CHANGE":
+        case "PROJECT_FORM_CHANGE":
             state = {
                 ...state,
                 formValue: {
@@ -33,7 +33,7 @@ const formModalReducer = (state = {
                 }
             };
             break;
-        case "FORM_RESET":
+        case "PROJECT_FORM_RESET":
             state = {
                 isShowed: false,
                 editMode: false,
@@ -54,13 +54,13 @@ const formModalReducer = (state = {
                 }
             };
             break;
-        case "FORM_SETUP_ERROR":
+        case "PROJECT_FORM_SETUP_ERROR":
             state = {
                 ...state,
                 formValueError: action.payload
             };
             break;
-        case "FORM_SETUP_EDIT_MODE":
+        case "PROJECT_FORM_SETUP_EDIT_MODE":
             state = {
                 ...state,
                 isShowed:true,
@@ -69,7 +69,7 @@ const formModalReducer = (state = {
                 formValue: action.payload
             };
             break;
-        case "FORM_SETUP_DELETE_MODE":
+        case "PROJECT_FORM_SETUP_DELETE_MODE":
             state = {
                 ...state,
                 isShowed:true,
@@ -83,4 +83,4 @@ const formModalReducer = (state = {
     return state;
 };
 
-export default formModalReducer;
+export default projectFormModalReducer;

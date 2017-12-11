@@ -33,9 +33,9 @@ class Filter extends React.Component {
                             filterValue: value
                         })}
                     >
-                        <MenuItem value={1} primaryText="First project"/>
-                        <MenuItem value={2} primaryText="Second project"/>
-                        <MenuItem value={3} primaryText="Third project"/>
+                        <MenuItem value="First project" primaryText="First project"/>
+                        <MenuItem value="Second project" primaryText="Second project"/>
+                        <MenuItem value="Third project" primaryText="Third project"/>
                     </SelectField>
                 </div>
                 <div className="col-md-4 col-lg-2">

@@ -9,7 +9,7 @@ import DeleteIcon from 'material-ui/svg-icons/action/delete';
 import EditIcon from 'material-ui/svg-icons/editor/mode-edit';
 
 import {loadListData} from '../actions/listActions';
-import {setUpEditMode,setUpDeleteMode} from '../actions/formModalActions';
+import {setUpEditMode,setUpDeleteMode} from '../actions/projectFormModalActions';
 import dummyProject from '../data/dummy-project.json'
 
 class ListProject extends React.Component {
@@ -65,12 +65,12 @@ class ListProject extends React.Component {
                                         </div>
                                         <div className="col-md-2 action-icons">
                                             <IconButton
-                                                onClick={() => setUpEditMode(this.props.list.allListItem[index])}
+                                                onClick={() => setUpEditMode(list.allListItem[index])}
                                                 tooltip="Edit">
                                                 <EditIcon />
                                             </IconButton>
                                             <IconButton
-                                                onClick={() => setUpDeleteMode(this.props.list.allListItem[index])}
+                                                onClick={() => setUpDeleteMode(list.allListItem[index])}
                                                 tooltip="Delete">
                                                 <DeleteIcon />
                                             </IconButton>
