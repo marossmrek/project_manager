@@ -17,7 +17,7 @@
     text-align: left;
   }
 
-  .list-item-code, .list-item- {
+  .list-item-code {
     color: #3b3b3b;
   }
 
@@ -31,6 +31,19 @@
       margin: 0px 0px 5px 0px;
       font-size: 14px;
       color: #3b3b3b;
+    }
+  }
+
+  .chip {
+    background: #E8E8E8;
+    border-radius: 20px;
+    .status {
+      padding: 0px !important;
+    }
+
+    .work-description {
+      color: black;
+      padding: 5px;
     }
   }
 

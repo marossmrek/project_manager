@@ -26,15 +26,15 @@ class ListProject extends React.Component {
         return (
             <div key={listItem.id} className="list-item-container">
                 <div className="row">
-                    <div className="col-xs-2 col-sm-1 col-md-1 avatar">
+                    <div className="col-xs-1 avatar">
                         <Avatar
                             size={45}
                             src="https://cdn1.iconfinder.com/data/icons/supericon-animals-1/512/Dog_SC.png"
                         />
                     </div>
-                    <div className="col-xs-10 col-sm-11 col-md-11">
+                    <div className="col-xs-11">
                         <div className="row">
-                            <div className="col-md-2">
+                            <div className="col-xs-2 item-info">
                                 <div className="list-item-user">
                                     {listItem.user}
                                 </div>
@@ -45,25 +45,25 @@ class ListProject extends React.Component {
                             <div className="col-xs-8">
                                 {listItem.projects.map((project, index) => {
                                     return (
-                                        <div className="row">
-                                            <Chip
-                                                className="col-xs-12 chip"
-                                                key={index}
-                                                style={{margin: "4px"}}
-                                            >
+                                        <div className="row chip">
+                                            <div className="col-xs-1 status">
                                                 <Avatar
+                                                    size={30}
                                                     backgroundColor={project.status === "Good" ? "#00C853" : "#e53935"}
                                                     icon={<PointIcon />}/>
 
+                                            </div>
+                                            <div className="col-xs-11 work-description">
                                                 <b>{project.code} </b>
                                                 {project.description}
                                                 <b> {project.percentage}%</b>
-                                            </Chip>
+
+                                            </div>
                                         </div>
                                     )
                                 })}
                             </div>
-                            <div className="col-md-2 action-icons">
+                            <div className="col-xs-2 action-icons">
                                 <IconButton
                                     onClick={() => this.props.setUpEditMode(this.props.list.allListItem[index])}
                                     tooltip="Edit">

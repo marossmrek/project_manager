@@ -124,18 +124,18 @@ class HowlFormModal extends React.Component {
                         <p>Sure delete howl from <b>{moment(form.formValue.date).format('DD.MM.YYYY')}</b>?</p> :
                         <div>
                             <div className="row">
-                                <div className="col-xs-10 linear-progress">
+                                <div className="col-sm-10 linear-progress">
                                     <LinearProgress color={this.getWorkingState() === 100 && "#ff4081"}
                                                     mode="determinate"
                                                     value={this.getWorkingState()}/>
                                 </div>
-                                <div className="col-xs-2 working-state">
+                                <div className="col-sm-2 working-state">
                                     <b>{this.getWorkingState()} %</b>
                                     <p className="error">{form.formValueError.percentageError}</p>
                                 </div>
                             </div>
                             <div className="row">
-                                <div className="col-xs-6">
+                                <div className="col-sm-6">
                                     <DatePicker
                                         floatingLabelText="Date"
                                         floatingLabelFixed={true}
@@ -152,7 +152,7 @@ class HowlFormModal extends React.Component {
                                         okLabel="OK"
                                     />
                                 </div>
-                                <div className="col-xs-6">
+                                <div className="col-sm-6">
                                     <SelectField
                                         floatingLabelText="Type"
                                         value={form.formValue.type}
@@ -171,7 +171,7 @@ class HowlFormModal extends React.Component {
                             {form.formValue.projects.map((project, order) => {
                                     return (
                                         <div key={order} className="row">
-                                            <div className="col-xs-2">
+                                            <div className="col-sm-2">
                                                 <SelectField
                                                     floatingLabelText="Code"
                                                     fullWidth={true}
@@ -188,7 +188,7 @@ class HowlFormModal extends React.Component {
                                                     <MenuItem value="DH4" primaryText="DH4"/>
                                                 </SelectField>
                                             </div>
-                                            <div className="col-xs-4">
+                                            <div className="col-sm-4">
                                                 <TextField
                                                     value={project.description}
                                                     fullWidth={true}
@@ -202,7 +202,7 @@ class HowlFormModal extends React.Component {
                                                     })}
                                                 />
                                             </div>
-                                            <div className="col-xs-3 slider">
+                                            <div className="col-sm-3 slider">
                                                 <IconButton disableTouchRipple={true} touch={true}
                                                             style={{width: "100%", height: "100%"}}
                                                             tooltip={project.percentage}
@@ -221,7 +221,7 @@ class HowlFormModal extends React.Component {
                                                     />
                                                 </IconButton>
                                             </div>
-                                            <div className="col-xs-1 form-icon">
+                                            <div className="col-xs-2 col-sm-1 form-icon">
                                                 <IconButton onClick={() => changeFormProjectValue({
                                                     index: order,
                                                     formName: "status",

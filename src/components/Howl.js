@@ -8,7 +8,7 @@ class Howl extends React.Component {
 
     render() {
         return (
-            <div className="container-fluid project">
+            <div className="container-fluid page-container">
                 <HowlFormModal/>
                 <Filter/>
                 <ListHowl/>

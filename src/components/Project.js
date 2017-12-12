@@ -7,7 +7,7 @@ class Project extends React.Component {
 
     render() {
         return (
-            <div className="container-fluid project">
+            <div className="container-fluid page-container">
                 <ProjectFormModal/>
                 <ListProject/>
             </div>

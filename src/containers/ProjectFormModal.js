@@ -88,7 +88,7 @@ class ProjectFormModal extends React.Component {
                     {form.deleteMode ? <p>Sure delete project <b>{form.formValue.name}</b>?</p> :
                         <div>
                             <div className="row">
-                                <div className="col-xs-8">
+                                <div className="col-sm-8">
                                     <TextField
                                         value={form.formValue.name}
                                         fullWidth={true}
@@ -101,7 +101,7 @@ class ProjectFormModal extends React.Component {
                                         })}
                                     />
                                 </div>
-                                <div className="col-xs-4">
+                                <div className="col-sm-4">
                                     <TextField
                                         value={form.formValue.code}
                                         fullWidth={true}
@@ -116,7 +116,7 @@ class ProjectFormModal extends React.Component {
                                 </div>
                             </div>
                             <div className="row">
-                                <div className="col-xs-6">
+                                <div className="col-sm-6">
                                     <SelectField
                                         floatingLabelText="Type"
                                         value={form.formValue.type}
@@ -133,7 +133,7 @@ class ProjectFormModal extends React.Component {
                                         <MenuItem value="Functions" primaryText="Functions"/>
                                     </SelectField>
                                 </div>
-                                <div className="col-xs-6">
+                                <div className="col-sm-6">
                                     <SelectField
                                         floatingLabelText="State"
                                         value={form.formValue.state}
@@ -152,7 +152,7 @@ class ProjectFormModal extends React.Component {
                                 </div>
                             </div>
                             <div className="row">
-                                <div className="col-xs-12">
+                                <div className="col-sm-12">
                                     <TextField
                                         value={form.formValue.description}
                                         fullWidth={true}
