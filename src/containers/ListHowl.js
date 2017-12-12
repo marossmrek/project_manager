@@ -12,7 +12,7 @@ import PointIcon from 'material-ui/svg-icons/image/brightness-1';
 
 import {loadListData} from '../actions/listActions';
 import {switchCurrentTab} from '../actions/tabActions';
-import{switchModal} from '../actions/howlFormModalActions';
+import {setUpDeleteMode, setUpEditMode} from '../actions/howlFormModalActions';
 import dummyHowl from '../data/dummy-howl.json'
 
 class ListProject extends React.Component {
@@ -22,7 +22,7 @@ class ListProject extends React.Component {
         this.props.loadListData(dummyHowl);
     }
 
-    getListItem(listItem) {
+    getListItem(listItem, index) {
         return (
             <div key={listItem.id} className="list-item-container">
                 <div className="row">
@@ -39,7 +39,7 @@ class ListProject extends React.Component {
                                     {listItem.user}
                                 </div>
                                 <div className="list-item-date">
-                                    {moment(new Date()).format('DD.MM.YYYY')}
+                                    {moment(listItem.date).format('DD.MM.YYYY')}
                                 </div>
                             </div>
                             <div className="col-xs-8">
@@ -47,7 +47,7 @@ class ListProject extends React.Component {
                                     return (
                                         <div className="row">
                                             <Chip
-                                                className="col-xs-12"
+                                                className="col-xs-12 chip"
                                                 key={index}
                                                 style={{margin: "4px"}}
                                             >
@@ -55,9 +55,9 @@ class ListProject extends React.Component {
                                                     backgroundColor={project.status === "Good" ? "#00C853" : "#e53935"}
                                                     icon={<PointIcon />}/>
 
-                                                <b>{project.name}</b>
+                                                <b>{project.code} </b>
                                                 {project.description}
-                                                <b>{project.percentage}%</b>
+                                                <b> {project.percentage}%</b>
                                             </Chip>
                                         </div>
                                     )
@@ -65,12 +65,12 @@ class ListProject extends React.Component {
                             </div>
                             <div className="col-md-2 action-icons">
                                 <IconButton
-                                    onClick={() => this.props.switchModal(true)}
+                                    onClick={() => this.props.setUpEditMode(this.props.list.allListItem[index])}
                                     tooltip="Edit">
                                     <EditIcon />
                                 </IconButton>
                                 <IconButton
-                                    onClick={() => this.props.switchModal(true)}
+                                    onClick={() => this.props.setUpDeleteMode(this.props.list.allListItem[index])}
                                     tooltip="Delete">
                                     <DeleteIcon />
                                 </IconButton>
@@ -96,17 +96,17 @@ class ListProject extends React.Component {
             >
                 <Tab label="Active" value="active">
                     <div>
-                        {list.allListItem.map((listItem) => {
+                        {list.allListItem.map((listItem, index) => {
                             return listItem.type === "Active" &&
-                                this.getListItem(listItem, list)
+                                this.getListItem(listItem, index)
                         })}
                     </div>
                 </Tab>
                 <Tab label="Draft" value="draft">
                     <div>
-                        {list.allListItem.map((listItem) => {
+                        {list.allListItem.map((listItem, index) => {
                             return listItem.type === "Draft" &&
-                                this.getListItem(listItem)
+                                this.getListItem(listItem, index)
                         })}
                     </div>
                 </Tab>
@@ -130,8 +130,11 @@ const mapDispatchToProps = (dispatch) => {
         switchCurrentTab: (currentTab) => {
             dispatch(switchCurrentTab(currentTab));
         },
-        switchModal: (isShowed) => {
-            dispatch(switchModal(isShowed));
+        setUpEditMode: (editForm) => {
+            dispatch(setUpEditMode(editForm))
+        },
+        setUpDeleteMode: (deleteItem) => {
+            dispatch(setUpDeleteMode(deleteItem))
         }
     };
 };

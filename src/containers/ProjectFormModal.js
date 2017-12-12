@@ -33,7 +33,7 @@ class ProjectFormModal extends React.Component {
         }
     }
 
-    simpleValidate() {
+    simpleProjectValidate() {
         const {
             form,
             setUpFormErrors
@@ -79,7 +79,7 @@ class ProjectFormModal extends React.Component {
                         <FlatButton
                             label={form.editMode ? "Edit" : form.deleteMode ? "Delete" : "Submit"}
                             primary={true}
-                            onClick={form.deleteMode ? this.handleSubmit.bind(this) : this.simpleValidate.bind(this)}
+                            onClick={form.deleteMode ? this.handleSubmit.bind(this) : this.simpleProjectValidate.bind(this)}
                         />,
                     ]}
                     modal={false}

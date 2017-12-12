@@ -18,13 +18,6 @@ export function resetFormValues() {
     };
 }
 
-export function setUpFormErrors(errors) {
-    return {
-        type: "PROJECT_FORM_SETUP_ERROR",
-        payload: errors
-    };
-}
-
 export function setUpEditMode(editData) {
     return {
         type: "PROJECT_FORM_SETUP_EDIT_MODE",
@@ -36,6 +29,13 @@ export function setUpDeleteMode(deleteItem) {
     return {
         type: "PROJECT_FORM_SETUP_DELETE_MODE",
         payload: deleteItem
+    };
+}
+
+export function setUpFormErrors(errors) {
+    return {
+        type: "PROJECT_FORM_SETUP_ERROR",
+        payload: errors
     };
 }
 
