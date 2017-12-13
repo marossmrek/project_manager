@@ -8,19 +8,23 @@ import IconMenu from 'material-ui/IconMenu';
 import MenuItem from 'material-ui/MenuItem';
 import IconButton from 'material-ui/IconButton';
 import MoreHorizontalIcon from 'material-ui/svg-icons/navigation/more-horiz';
+import Snackbar from 'material-ui/Snackbar';
 
-import {setUser} from '../actions/userActions'
+import {setUser} from '../actions/userActions';
+import {hiddenSnackBar, setSnackBarMsg} from '../actions/snackAction';
 
 class Header extends React.Component {
 
     handleSuccesLogin(response) {
         window.localStorage.setItem('user', JSON.stringify(response));
         this.props.setUser();
+        this.props.setSnackBarMsg("Login successfully");
     };
 
     handleSuccesLogout() {
         window.localStorage.removeItem('user');
         this.props.setUser();
+        this.props.setSnackBarMsg("Logout successfully");
     };
 
     getGoogleButton() {
@@ -38,13 +42,14 @@ class Header extends React.Component {
                 style={{background: "none", border: "none"}}
                 onSuccess={this.handleSuccesLogin.bind(this)}
                 onFailure={(response) => {
-                    console.log("Something wrong, please try later")
+                    this.props.setSnackBarMsg("Something wrong, please try later");
                 }}
             />;
         return googleButton;
     }
 
     render() {
+        const {snack, hiddenSnackBar} = this.props;
         return (
             <div className="main-header">
                 <AppBar
@@ -67,6 +72,12 @@ class Header extends React.Component {
                         </div>
                     }
                 />
+                <Snackbar
+                    open={snack.isOpen}
+                    message={snack.msg}
+                    autoHideDuration={5000}
+                    onRequestClose={hiddenSnackBar}
+                />
             </div>
         );
     }
@@ -74,7 +85,8 @@ class Header extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        user: state.user
+        user: state.user,
+        snack: state.snack
     };
 };
 
@@ -82,6 +94,12 @@ const mapDispatchToProps = (dispatch) => {
     return {
         setUser: () => {
             dispatch(setUser())
+        },
+        hiddenSnackBar: () => {
+            dispatch(hiddenSnackBar())
+        },
+        setSnackBarMsg: (msg) => {
+            dispatch(setSnackBarMsg(msg))
         }
     };
 };

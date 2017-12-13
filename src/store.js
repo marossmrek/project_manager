@@ -6,8 +6,9 @@ import list from './reducers/listReducer';
 import projectFormModal from './reducers/projectFormModalReducer';
 import howlFormModal from './reducers/howlFormModalReducer';
 import tab from './reducers/tabReducer';
-import user from './reducers/userReducer'
+import user from './reducers/userReducer';
+import snack from './reducers/snackReducer';
 
 export default createStore(
-    combineReducers({filter, list, projectFormModal, howlFormModal, tab, user}), {}, applyMiddleware(createLogger())
+    combineReducers({filter, list, projectFormModal, howlFormModal, tab, user, snack}), {}, applyMiddleware(createLogger())
 );

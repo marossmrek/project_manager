@@ -10,6 +10,7 @@ import MenuItem from 'material-ui/MenuItem';
 
 import {switchModal, changeFormValue, resetFormValues, setUpFormErrors} from '../actions/projectFormModalActions';
 import {loadListData} from '../actions/listActions';
+import {setSnackBarMsg} from '../actions/snackAction';
 
 class ProjectFormModal extends React.Component {
 
@@ -20,6 +21,7 @@ class ProjectFormModal extends React.Component {
             form,
             loadListData,
             resetFormValues,
+            setSnackBarMsg
         } = this.props;
 
         if (!form.editMode && !form.deleteMode) {
@@ -28,8 +30,10 @@ class ProjectFormModal extends React.Component {
             list.allListItem.push(form.formValue);
             loadListData(list.allListItem);
             resetFormValues();
+            setSnackBarMsg("Successfully added to active howl");
         } else {
             resetFormValues();
+            setSnackBarMsg("Nothing, in future msg about edit or delete");
         }
     }
 
@@ -90,6 +94,7 @@ class ProjectFormModal extends React.Component {
                             <div className="row">
                                 <div className="col-sm-8">
                                     <TextField
+                                        autoFocus={true}
                                         value={form.formValue.name}
                                         fullWidth={true}
                                         errorText={form.formValueError.nameError}
@@ -196,6 +201,9 @@ const mapDispatchToProps = (dispatch) => {
         },
         loadListData: (listData) => {
             dispatch(loadListData(listData));
+        },
+        setSnackBarMsg: (msg) => {
+            dispatch(setSnackBarMsg(msg))
         }
     };
 };

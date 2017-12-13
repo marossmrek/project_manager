@@ -25,6 +25,7 @@ import{
     setUpFormErrors
 } from '../actions/howlFormModalActions';
 import {loadListData} from '../actions/listActions';
+import {setSnackBarMsg} from '../actions/snackAction';
 
 class HowlFormModal extends React.Component {
 
@@ -35,6 +36,7 @@ class HowlFormModal extends React.Component {
             form,
             loadListData,
             resetFormValues,
+            setSnackBarMsg
         } = this.props;
 
         if (!form.editMode && !form.deleteMode) {
@@ -43,8 +45,12 @@ class HowlFormModal extends React.Component {
             list.allListItem.push(form.formValue);
             loadListData(list.allListItem);
             resetFormValues();
+            form.formValue.type === "Active" ?
+                setSnackBarMsg("Successfully added to active howl") : setSnackBarMsg("Added to draft")
+
         } else {
             resetFormValues();
+            setSnackBarMsg("Nothing, in future msg about edit or delete")
         }
     }
 
@@ -80,7 +86,7 @@ class HowlFormModal extends React.Component {
     getWorkingState() {
         let workingState = 0;
         this.props.form.formValue.projects.map((project) => {
-            workingState +=  project.percentage;
+            workingState += project.percentage;
         });
         return workingState;
     }
@@ -287,6 +293,9 @@ const mapDispatchToProps = (dispatch) => {
         },
         loadListData: (listData) => {
             dispatch(loadListData(listData));
+        },
+        setSnackBarMsg: (msg) => {
+            dispatch(setSnackBarMsg(msg))
         }
     };
 };
