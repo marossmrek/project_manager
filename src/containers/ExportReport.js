@@ -4,6 +4,7 @@ import ReactHTMLTableToExcel from 'react-html-table-to-excel';
 import moment from 'moment';
 
 class ExportReport extends React.Component {
+
     render() {
         return (
             <div>
@@ -14,12 +15,12 @@ class ExportReport extends React.Component {
                     sheet="Report"
                     buttonText="Export report"/>
                 <table style={{display: "none"}} id="table-to-excel">
-                    {this.props.list.allListItem.map((list, index) => {
+                    {this.props.list.allListItem && this.props.list.allListItem.map((list, index) => {
                             return (
                                 <tbody key={index}>
                                     <tr>
                                         <th>Date</th>
-                                        {list.projects.map((project,index) => {
+                                        {list.projects && list.projects.map((project,index) => {
                                             return (
                                                 <span key={index}>
                                                     <th>{`${project.code} ${list.user} Effor`}</th>
@@ -30,7 +31,7 @@ class ExportReport extends React.Component {
                                     </tr>
                                     <tr>
                                         <td>{moment(list.date).format('DD.MM.YYYY')}</td>
-                                        {list.projects.map((project,index) => {
+                                        {list.projects && list.projects.map((project,index) => {
                                             return (
                                                 <span key={index}>
                                                     <td>{project.percentage}</td>

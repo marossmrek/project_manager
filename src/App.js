@@ -1,7 +1,7 @@
 import React from 'react';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 
-import Header from './components/Header';
+import Header from './containers/Header';
 import Home from './Home'
 import Project from './components/Project';
 import Howl from './components/Howl'
