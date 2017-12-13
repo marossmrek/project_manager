@@ -3,12 +3,15 @@
   .title {
     text-decoration: none;
     color: #fff;
+    margin-top: 10px;
+    display: inline-block;
     &:hover {
       text-decoration: none;
     }
   }
   .nav-links {
     padding: 5px;
+    margin-bottom: 10px;
     .link {
       color: #fff;
       text-decoration: none;
@@ -19,7 +22,6 @@
     }
     .active-link{
       color: #ff4081;
-      font-size: 20px;
     }
   }
 }

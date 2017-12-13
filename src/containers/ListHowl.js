@@ -26,12 +26,14 @@ class ListProject extends React.Component {
             <div key={listItem.id} className="list-item-container">
                 <div className="row">
                     <div className="col-xs-1 avatar">
-                        <Avatar
-                            size={45}
-                            src="https://cdn1.iconfinder.com/data/icons/supericon-animals-1/512/Dog_SC.png"
-                        />
+                        <IconButton tooltip="future profile foto">
+                            <Avatar
+                                size={45}
+                                src="https://cdn1.iconfinder.com/data/icons/supericon-animals-1/512/Dog_SC.png"
+                            />
+                        </IconButton>
                     </div>
-                    <div className="col-xs-11">
+                    <div className="col-xs-12 col-sm-11">
                         <div className="row">
                             <div className="col-xs-2 item-info">
                                 <div className="list-item-user">
@@ -41,7 +43,7 @@ class ListProject extends React.Component {
                                     {moment(listItem.date).format('DD.MM.YYYY')}
                                 </div>
                             </div>
-                            <div className="col-xs-8">
+                            <div className="col-xs-8 howl-content">
                                 {listItem.projects.map((project, index) => {
                                     return (
                                         <div className="row chip">
@@ -50,7 +52,6 @@ class ListProject extends React.Component {
                                                     size={30}
                                                     backgroundColor={project.status === "Good" ? "#00C853" : "#e53935"}
                                                     icon={<PointIcon />}/>
-
                                             </div>
                                             <div className="col-xs-11 work-description">
                                                 <b>{project.code} </b>

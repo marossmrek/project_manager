@@ -7,7 +7,7 @@ import AppBar from 'material-ui/AppBar';
 import IconMenu from 'material-ui/IconMenu';
 import MenuItem from 'material-ui/MenuItem';
 import IconButton from 'material-ui/IconButton';
-import MoreHorizontalIcon from 'material-ui/svg-icons/navigation/more-horiz';
+import MoreVerticalIcon from 'material-ui/svg-icons/navigation/more-vert';
 import Snackbar from 'material-ui/Snackbar';
 
 import {setUser} from '../actions/userActions';
@@ -60,9 +60,9 @@ class Header extends React.Component {
                             <NavLink className="link" activeClassName="active-link" to="/project">Project</NavLink>
                             <NavLink className="link" activeClassName="active-link" to="/howl">Howl</NavLink>
                             <IconMenu
-                                iconStyle={{color: "white", paddingTop: "4px"}}
+                                iconStyle={{color: "white"}}
                                 iconButtonElement={
-                                    <IconButton ><MoreHorizontalIcon/></IconButton>
+                                    <IconButton ><MoreVerticalIcon/></IconButton>
                                 }
                                 targetOrigin={{horizontal: 'right', vertical: 'top'}}
                                 anchorOrigin={{horizontal: 'right', vertical: 'top'}}
