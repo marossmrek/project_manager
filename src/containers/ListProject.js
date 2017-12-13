@@ -46,7 +46,7 @@ class ListProject extends React.Component {
                                     <div className="row">
                                         <div className="col-md-2">
                                             <div className="list-item-date">
-                                                {moment(new Date()).format('DD.MM.YYYY')}
+                                                {moment(listItem.date).format('DD.MM.YYYY')}
                                             </div>
                                             <div className="list-item-code">
                                                 {listItem.code}

@@ -5,7 +5,8 @@
     "date": "Thu Dec 07 2017 14:31:42",
     "type": "Active",
     "projects":[
-      {"status":"Good","code":"DH2","description": "Vivamus suscipit tortor eget felis porttitor volutpat. Lorem ipsum dolor sit amet.", "percentage":"100"}
+      {"status":"Good","code":"DH1","description": "Test suscipit tortor eget felis porttitor volutpat. Lorem ipsum dolor sit amet.", "percentage":"40"},
+      {"status":"Good","code":"DH2","description": "Vivamus suscipit tortor eget felis porttitor volutpat. Lorem ipsum dolor sit amet.", "percentage":"60"}
     ]
   },
   {

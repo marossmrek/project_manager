@@ -97,6 +97,17 @@ const howlFormModalReducer = (state = {
                 editMode: true,
                 deleteMode: false,
                 formValue: action.payload,
+                formValueError: {
+                    dateError: "",
+                    typeError: "",
+                    percentageError: "",
+                    projects: action.payload.projects.map((content, i) => {
+                            return (
+                                {code: "", description: ""}
+                            )
+                        }
+                    )
+                }
             };
             break;
         case "HOWL_FORM_SETUP_DELETE_MODE":

@@ -80,7 +80,7 @@ class HowlFormModal extends React.Component {
     getWorkingState() {
         let workingState = 0;
         this.props.form.formValue.projects.map((project) => {
-            workingState = workingState + project.percentage;
+            workingState +=  project.percentage;
         });
         return workingState;
     }
@@ -97,8 +97,8 @@ class HowlFormModal extends React.Component {
 
 
         return (
-            <div className="row">
-                <div className="col-xs-12">
+            <div>
+                <div className="col-xs-6">
                     <RaisedButton onClick={() => switchModal(true)} label="Create new howl"
                                   secondary={true} fullWidth={true}/>
                 </div>
@@ -125,7 +125,7 @@ class HowlFormModal extends React.Component {
                         <div>
                             <div className="row">
                                 <div className="col-sm-10 linear-progress">
-                                    <LinearProgress color={this.getWorkingState() === 100 && "#ff4081"}
+                                    <LinearProgress color={this.getWorkingState() === 100 ? "#ff4081" : "#00BCD4"}
                                                     mode="determinate"
                                                     value={this.getWorkingState()}/>
                                 </div>

@@ -4,7 +4,6 @@ import moment from 'moment';
 
 import Avatar from 'material-ui/Avatar';
 import IconButton from 'material-ui/IconButton';
-import Chip from 'material-ui/Chip';
 import {Tabs, Tab} from 'material-ui/Tabs';
 import DeleteIcon from 'material-ui/svg-icons/action/delete';
 import EditIcon from 'material-ui/svg-icons/editor/mode-edit';
