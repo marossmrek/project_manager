@@ -9,14 +9,18 @@ import DeleteIcon from 'material-ui/svg-icons/action/delete';
 import EditIcon from 'material-ui/svg-icons/editor/mode-edit';
 
 import {loadListData} from '../actions/listActions';
-import {setUpEditMode,setUpDeleteMode} from '../actions/projectFormModalActions';
-import dummyProject from '../data/dummy-project.json'
+import {setUpEditMode, setUpDeleteMode} from '../actions/projectFormModalActions';
+import {Project} from '../service/Project';
 
 class ListProject extends React.Component {
 
     componentWillMount() {
-        //TODO: API call for load all project, now just for testing load local json file
-        this.props.loadListData(dummyProject);
+        this.loadAllPorojects();
+    }
+
+    async loadAllPorojects() {
+        let allProjects = await Project.getAllProjects();
+        allProjects && this.props.loadListData(allProjects.data);
     }
 
     render() {

@@ -1,5 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import moment from 'moment';
 
 import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
@@ -11,30 +12,52 @@ import MenuItem from 'material-ui/MenuItem';
 import {switchModal, changeFormValue, resetFormValues, setUpFormErrors} from '../actions/projectFormModalActions';
 import {loadListData} from '../actions/listActions';
 import {setSnackBarMsg} from '../actions/snackAction';
+import {Project} from '../service/Project';
+
 
 class ProjectFormModal extends React.Component {
 
     handleSubmit() {
-        //TODO: API call for add,update or delete project item, now just for testing
-        const {
-            list,
-            form,
-            loadListData,
-            resetFormValues,
-            setSnackBarMsg
-        } = this.props;
+        const {form} = this.props;
 
         if (!form.editMode && !form.deleteMode) {
-            form.formValue.id = list.allListItem.length + 1;
-            form.formValue.date = new Date();
-            list.allListItem.push(form.formValue);
-            loadListData(list.allListItem);
-            resetFormValues();
-            setSnackBarMsg("Successfully added to active howl");
+            form.formValue.date = moment(new Date()).format('DD.MM.YYYY');
+            this.insertNewProject(form.formValue);
+        } else if (form.editMode) {
+            this.updateProject(form.formValue);
         } else {
-            resetFormValues();
-            setSnackBarMsg("Nothing, in future msg about edit or delete");
+            this.deleteProject(form.formValue.id);
         }
+    }
+
+    async loadAllProject() {
+        const {
+            resetFormValues,
+            setSnackBarMsg,
+            loadListData
+        } = this.props;
+
+        let allProjects = await Project.getAllProjects();
+        if (allProjects) {
+            resetFormValues();
+            setSnackBarMsg("Successfully");
+            loadListData(allProjects.data);
+        }
+    }
+
+    async deleteProject(id) {
+        let deleteProject = await Project.deleteProjectById(id);
+        deleteProject && this.loadAllProject();
+    }
+
+    async updateProject(project) {
+        let updateProject = await Project.updateProjectById(project.id, project);
+        updateProject && this.loadAllProject();
+    }
+
+    async insertNewProject(newProject) {
+        let insertProject = await Project.insertNewProject(newProject);
+        insertProject && this.loadAllProject();
     }
 
     simpleProjectValidate() {
