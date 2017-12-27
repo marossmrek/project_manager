@@ -105,7 +105,7 @@ class HowlFormModal extends React.Component {
         return (
             <div>
                 <div className="col-xs-6">
-                    <RaisedButton onClick={() => switchModal(true)} label="Create new howl"
+                    <RaisedButton onClick={() => switchModal(true)} label="Create new"
                                   secondary={true} fullWidth={true}/>
                 </div>
                 <Dialog

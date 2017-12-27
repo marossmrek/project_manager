@@ -53,7 +53,7 @@ class Header extends React.Component {
         return (
             <div className="main-header">
                 <AppBar
-                    title={<NavLink to="/" className="title">Daily howl</NavLink>}
+                    title={<NavLink to="/" className="title">Project Manager</NavLink>}
                     iconStyleLeft={{display: "none"}}
                     iconElementRight={
                         <div className="nav-links">
